@@ -11,19 +11,20 @@ internal class Program
     private static async Task Main(string[] args)
     {
         Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-
-        var hostBuilder = Host.CreateDefaultBuilder(args);
+        
+        var builder = new HostApplicationBuilder();
 
         if (WindowsServiceHelpers.IsWindowsService())
-            hostBuilder.UseWindowsService();
-
-        await hostBuilder.ConfigureServices((hostContext, services) =>
+            builder.Services.AddWindowsService(options =>
             {
-                services.AddSingleton(args);
-                services.AddHostedService<FanucService>();
-            })
-            .Build()
-            .RunAsync();
+                options.ServiceName = "fanuc-cnc-api";
+            });
+
+        builder.Services.AddSingleton(args);
+        builder.Services.AddHostedService<FanucService>();
+        
+        IHost host = builder.Build();
+        await host.RunAsync();
     }
 }
 
@@ -31,7 +32,6 @@ public class FanucService : BackgroundService
 {
     private readonly IHostApplicationLifetime _lifetime;
     private readonly string[] _args;
-    private bool _shutdownRequested;
 
     public FanucService(IHostApplicationLifetime lifetime, string[] args)
     {
@@ -41,7 +41,7 @@ public class FanucService : BackgroundService
 
     public override Task StartAsync(CancellationToken cancellationToken)
     {
-        
+        Console.WriteLine("Application starting...");
         Console.WriteLine($"Bitness: {(IntPtr.Size == 8 ? "64-bit" : "32-bit")}");
         LogManager.Configuration = new XmlLoggingConfiguration("nlog.config");
         var config = new ConfigurationBuilder().Build();
@@ -56,6 +56,7 @@ public class FanucService : BackgroundService
 
     public override Task StopAsync(CancellationToken cancellationToken)
     {
+        Console.WriteLine("Application stopping...");
         LogManager.Shutdown();
         return base.StopAsync(cancellationToken);
     }
