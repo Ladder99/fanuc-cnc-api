@@ -15,19 +15,9 @@ public class MyCode
         
         try
         {
-            var platform = new Platform(stoppingToken);
-            
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.Info("connect to machine...");
-                var connection = await platform.ConnectAsync("localhost", 8193, 3);
-                _logger.Info("read system info...");
-                var sysinfo = await platform.SysInfoAsync();
-                _logger.Info("disconnect from machine...");
-                var disconnection = await platform.DisconnectAsync();
-                
-                await Task.Delay(1000, stoppingToken);
-            }
+            // var task = new MyTasks.ParameterDump();
+            var task = new MyTasks.ProgramUpload();
+            await task.ExecuteAsync(stoppingToken);
         }
         catch (OperationCanceledException)
         {
