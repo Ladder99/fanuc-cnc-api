@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fanuc-cnc-api", "fanuc-cnc-api.csproj", "{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+                Debug 32bit|Any CPU = Debug 32bit|Any CPU
+		Release 32 bit|Any CPU = Release 32 bit|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Debug 32bit|Any CPU.ActiveCfg = Debug 32bit|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Debug 32bit|Any CPU.Build.0 = Debug 32bit|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Release 32 bit|Any CPU.ActiveCfg = Release 32 bit|Any CPU
+		{A37218E7-B53D-4D2C-99A5-CC58E897B2ED}.Release 32 bit|Any CPU.Build.0 = Release 32 bit|Any CPU
+	EndGlobalSection
+EndGlobal
