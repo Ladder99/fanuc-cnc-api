@@ -16,7 +16,8 @@ public class MyCode
         try
         {
             // var task = new MyTasks.ParameterDump();
-            var task = new MyTasks.ProgramUpload();
+            // var task = new MyTasks.ProgramUpload();
+            var task = new MyTasks.ListAxesAndSpindles();
             await task.ExecuteAsync(stoppingToken);
         }
         catch (OperationCanceledException)
